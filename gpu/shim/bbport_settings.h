@@ -61,7 +61,7 @@ struct Values {
     std::atomic<int> preset{NativeAA};
     std::atomic<bool> sharpen{true};
     std::atomic<float> sharpness{0.3f};
-    std::atomic<bool> jitter{true};
+    std::atomic<bool> jitter{false}; ///< off by default: distant detail shimmers with it
     std::atomic<bool> reactive{false};
     std::atomic<bool> object_motion{true};
     std::atomic<float> reactive_scale{1.0f};
@@ -92,6 +92,10 @@ struct Values {
     std::atomic<int> frame_gen_multiplier{2};
     std::atomic<int> dlssg_max_multiplier{1};
     std::atomic<const char*> frame_gen_problem{nullptr};
+
+    /// The settings file's version (settings_version): below 3 the jitter switch is turned off
+    /// once (version 2 had switched it back on; distant objects still shimmer and shake with it).
+    int settings_version = 0;
 
     /// Startup settings for the explicit BB_RENDER_RES compatibility patch only.
     int startup_preset = NativeAA;
