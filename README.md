@@ -33,16 +33,6 @@ This client ships with a built in updater that can be toggled on/off, and update
 - In the Display tab, a Steam Deck mode is auto-selected if you are on SteamOS. With this enabled, expect an average of 25-30fps with occasional dips during demanding segments.
 - It is recommended to set your FPS cap to 30fps on the Steam Deck power menu.
 
-### Controller in desktop mode (Steam Deck, Legion Go)
-
-When you run the games from desktop mode on a Steam Deck or a Legion Go, the controller only works if two environment variables are set:
-
-```
-SDL_VIDEO_DRIVER=x11 SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD=1 ./Uncharted-x86_64.AppImage
-```
-
-For a Steam shortcut, put the same two variables in front of `%command%` in the launch options. In Game Mode, launch through Steam as described above.
-
 ## Files needed 
 
 You must have an unencrypted extracted dump of the Uncharted: The Nathan Drake Collection (CUSA02320) v1.00.
