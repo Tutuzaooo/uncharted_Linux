@@ -1,5 +1,4 @@
 # Uncharted: The Nathan Drake Collection for Linux/Steam Deck
-**WORK IN PROGRESS. READ BELOW FOR CURRENT PROGRESS ON EACH GAME**
 
 👾Join the Discord: https://discord.gg/X2YhSJg6R2
 
@@ -7,13 +6,6 @@
 
 **This client is a launcher that allows you to directly launch Uncharted 1-3, add to your desktop or add to your Steam Library. This fork features auto-updates, a modified save system and a Steam Deck mode that optimizes playback for Steam Deck.**
 <img width="700" height="500" alt="image" src="https://github.com/user-attachments/assets/361582f1-7221-4f99-9a67-1748343836ad" />
-
-
-✅Uncharted 1: Confirmed fully playable with some visual glitches
-
-✅Uncharted 2: Confirmed fully playable with some visual glitches
-
-⚠️Uncharted 3: Unconfirmed if fully playable
 
 ## Distributions tested
 ✅ Confirmed Working: SteamOS 3.7, Fedora 44, Debian 13 CachyOS, Arch, openSUSE Tumbleweed, Ubuntu 24.04, Mint 22, Pop!OS 24.04
