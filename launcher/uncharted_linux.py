@@ -475,8 +475,13 @@ DECK_FALLBACK = {'anti_aliasing': 'off', 'frame_generation': 'off', 'frame_gen_m
 
 # The texts under upstream's settings rows, by row title: replaced, or None for none.
 ROW_HINTS = {'Frame rate': None,
-             'Window size': 'Game renders at 1920 x 1080 and is upscaled at higher resolutions',
-             'Upscaling': None, 'Sharpening': None, 'Anti-aliasing': None,
+             'Window size': 'Set it to the Resolution above for a sharp 1:1 picture',
+             'Resolution': "Your screen's resolution. Drake's Fortune draws at most 2880 x 1620",
+             'Upscaler': 'DLSS or FSR 4 for upscaling; FSR 1 only enlarges, TAA only smooths edges',
+             'Quality': 'Native: anti-aliasing only (DLAA). Quality 1.5x, Balanced 1.7x, Performance 2x, '
+                        'Ultra Performance 3x',
+             'Sharpness': 'For every upscaler, FSR 1 included (AMD RCAS)', 'Sharpening': None,
+             'Anti-aliasing': None,
              'Frame generation': None, 'Multiplier': None, 'Mouse sensitivity': None}
 
 
@@ -1534,10 +1539,11 @@ def launcher_class(base, ns):
                 for config in configs:
                     bbport_steam.add_shortcut(config / 'shortcuts.vdf', name, exe, str(start_dir),
                                               str(icon) if icon.is_file() else '', options, match_options=True)
-                    try:  # library pictures from the player's own game folder
+                    try:  # library pictures: SteamGridDB's, else the player's own game folder's
                         import uncharted_art
-                        uncharted_art.steam_artwork(self.app['game_dir'], config / 'grid',
-                                                    bbport_steam.shortcut_id(f'"{exe}"', name))
+                        appid = bbport_steam.shortcut_id(f'"{exe}"', name)
+                        if not uncharted_art.steamgriddb_artwork(key, config / 'grid', appid):
+                            uncharted_art.steam_artwork(self.app['game_dir'], config / 'grid', appid)
                     except Exception:
                         pass
             except (OSError, ValueError) as error:

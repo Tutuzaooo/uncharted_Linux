@@ -41,6 +41,16 @@ This client ships with a built in updater that can be toggled on/off, and update
 - In the Display tab, a Steam Deck mode is auto-selected if you are on SteamOS. With this enabled, expect an average of 25-30fps with occasional dips during demanding segments.
 - It is recommended to set your FPS cap to 30fps on the Steam Deck power menu.
 
+### Controller in desktop mode (Steam Deck, Legion Go)
+
+When you run the games from desktop mode on a Steam Deck or a Legion Go, the controller only works if two environment variables are set:
+
+```
+SDL_VIDEO_DRIVER=x11 SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD=1 ./Uncharted-x86_64.AppImage
+```
+
+For a Steam shortcut, put the same two variables in front of `%command%` in the launch options. In Game Mode, launch through Steam as described above.
+
 ## Files needed 
 
 You must have an unencrypted extracted dump of the Uncharted: The Nathan Drake Collection (CUSA02320) v1.00.
@@ -71,6 +81,7 @@ Bloodborne by deadinside28, and on the [shadPS4](https://github.com/shadps4-emu/
 renderer. Video decoding (Videodec2) and the DLSS bridge come from
 [IFreemz/shadPS4-Bloodborne-DLSS-FSR](https://github.com/IFreemz/shadPS4-Bloodborne-DLSS-FSR).
 Thanks to Mindro for the shadPS4 Uncharted build that showed which problems to look for.
+The render resolution patch (scripts/render_res.py, cutscene movie scaling in gpu/shim/bbport_movie.cpp, the Uncharted 2 aim focus fix) is ported from [BilalReloaded's Uncharted PC port](https://github.com/bc160201983/Uncharted-The-Nathan-Drake-Collection-PC-port) (GPL-2.0-or-later).
 
 Also used: [FSR-Vulkan](https://github.com/FireBurn/FSR-Vulkan) and the AMD FidelityFX SDK (FSR),
 FSR 4 assets from [FireBurn/Q2RTX](https://github.com/FireBurn/Q2RTX), the
