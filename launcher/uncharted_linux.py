@@ -1539,10 +1539,11 @@ def launcher_class(base, ns):
                 for config in configs:
                     bbport_steam.add_shortcut(config / 'shortcuts.vdf', name, exe, str(start_dir),
                                               str(icon) if icon.is_file() else '', options, match_options=True)
-                    try:  # library pictures from the player's own game folder
+                    try:  # library pictures: SteamGridDB's, else the player's own game folder's
                         import uncharted_art
-                        uncharted_art.steam_artwork(self.app['game_dir'], config / 'grid',
-                                                    bbport_steam.shortcut_id(f'"{exe}"', name))
+                        appid = bbport_steam.shortcut_id(f'"{exe}"', name)
+                        if not uncharted_art.steamgriddb_artwork(key, config / 'grid', appid):
+                            uncharted_art.steam_artwork(self.app['game_dir'], config / 'grid', appid)
                     except Exception:
                         pass
             except (OSError, ValueError) as error:
